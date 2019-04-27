@@ -1,4 +1,6 @@
 # gnurradio-grc-exsamples
 
 This project will have all my gnuradio grc files<br>
-first file is my atemt at SSB transmitter for hackrf 
+Here is my files for rtl-sdr Lime sdr and hackrf<br>
+<br>
+If you want a radio design for your application then contact me.
