@@ -1,16 +1,16 @@
 options:
   parameters:
-    author: ''
+    author: Anton Janovsky ZR6AIC
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
     copyright: ''
-    description: ''
+    description: QO-100 SSB and CW recever
     gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: top_block
+    id: qo_100_ssb_cw_rx
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +21,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: ''
+    title: QO-100 ssb and CW resever
     window_size: ''
   states:
     bus_sink: false
@@ -41,7 +41,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 332]
+    coordinate: [240, 324.0]
     rotation: 0
     state: enabled
 - name: variable_chooser_0
@@ -177,7 +177,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 4]
+    coordinate: [456, 4.0]
     rotation: 0
     state: enabled
 - name: audio_sink_0
@@ -368,7 +368,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [456, 120]
+    coordinate: [432, 144.0]
     rotation: 0
     state: enabled
 - name: blocks_float_to_complex_0
@@ -659,7 +659,7 @@ blocks:
     dc_offset_mode7: '0'
     dc_offset_mode8: '0'
     dc_offset_mode9: '0'
-    freq0: 7.050e6
+    freq0: 145.825e6
     freq1: 100e6
     freq10: 100e6
     freq11: 100e6
@@ -838,7 +838,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [120, 244]
+    coordinate: [8, 180.0]
     rotation: 0
     state: enabled
 - name: qtgui_sink_x_0
