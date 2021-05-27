@@ -10,4 +10,7 @@ Restart gnuradio-companion<br>
 compile detectmarkspace.grc<br>
 close gnuradio-companion<br>
 Start gnuradio-companion and open the exsample APRS.grc<br>
-your afsk decoder should now work<br
+your afsk decoder should now work<br>
+# if you upgrade your Gnuradio to higer vertion 
+run the following command if ou upgrade or downgrade from previose verion of gnuradio before starting gnuradio 3.8 to .3.9 <br>
+rm -rf ~/.cache/grc_gnuradio/cache.json<br>
