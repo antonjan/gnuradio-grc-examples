@@ -5,8 +5,8 @@
 # SPDX-License-Identifier: GPL-3.0
 #
 # GNU Radio Python Flow Graph
-# Title: TestSDR
-# Author: anton
+# Title: Testing Alsa loopback
+# Author: Anton Janovsky ZR6AIC
 # GNU Radio version: 3.8.1.0
 
 from distutils.version import StrictVersion
@@ -35,12 +35,12 @@ from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 from gnuradio import qtgui
 
-class Testsdr(gr.top_block, Qt.QWidget):
+class test_alsa_loopback(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "TestSDR")
+        gr.top_block.__init__(self, "Testing Alsa loopback")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("TestSDR")
+        self.setWindowTitle("Testing Alsa loopback")
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
@@ -58,7 +58,7 @@ class Testsdr(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "Testsdr")
+        self.settings = Qt.QSettings("GNU Radio", "test_alsa_loopback")
 
         try:
             if StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
@@ -71,7 +71,7 @@ class Testsdr(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 1800000
+        self.samp_rate = samp_rate = 48000
 
         ##################################################
         # Blocks
@@ -123,8 +123,8 @@ class Testsdr(gr.top_block, Qt.QWidget):
 
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win)
-        self.audio_source_0 = audio.source(samp_rate, 'hw:1,1,2', True)
-        self.audio_sink_0 = audio.sink(samp_rate, 'hw:1,0,2', True)
+        self.audio_source_0 = audio.source(samp_rate, 'plughw:1,1,1', True)
+        self.audio_sink_0 = audio.sink(samp_rate, 'plughw:1,0,1', True)
         self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 1000, 1, 0, 0)
 
 
@@ -136,7 +136,7 @@ class Testsdr(gr.top_block, Qt.QWidget):
         self.connect((self.audio_source_0, 0), (self.qtgui_time_sink_x_0, 0))
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "Testsdr")
+        self.settings = Qt.QSettings("GNU Radio", "test_alsa_loopback")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -150,7 +150,7 @@ class Testsdr(gr.top_block, Qt.QWidget):
 
 
 
-def main(top_block_cls=Testsdr, options=None):
+def main(top_block_cls=test_alsa_loopback, options=None):
 
     if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
         style = gr.prefs().get_string('qtgui', 'style', 'raster')
